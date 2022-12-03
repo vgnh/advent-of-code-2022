@@ -19,10 +19,12 @@ func (s *Set[T]) AddAll(slice []T) {
 	}
 }
 
-func (s *Set[T]) RetainAll(slice []T) {
-	for _, v := range MapKeys(*s) {
-		if !Contains(slice, v) {
-			delete(*s, v)
+func (s *Set[T]) RetainAll(slice []T) *Set[T] {
+	newSet := make(Set[T])
+	for _, v := range slice {
+		if s.Contains(v) {
+			newSet.Add(v)
 		}
 	}
+	return &newSet
 }

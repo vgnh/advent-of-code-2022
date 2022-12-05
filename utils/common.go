@@ -36,7 +36,7 @@ func ReadString(filename string) string {
 	if err != nil {
 		fmt.Println(err)
 	}
-	return strings.TrimSpace(string(data))
+	return string(data)
 }
 
 func MapToInt(strs []string) []int {

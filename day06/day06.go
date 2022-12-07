@@ -7,25 +7,30 @@ import (
 
 const filename = "./day06/input.txt"
 
-var datastreamBuffer = utils.ReadString(filename)
+var buffer = []rune(utils.ReadString(filename))
 
-func markerPosition(markerLength int) int {
-	for i := 0; i <= len(datastreamBuffer)-markerLength; i++ {
-		s := make(utils.Set[rune])
-		s.AddAll([]rune(datastreamBuffer[i : i+markerLength]))
-		if len(s) == markerLength {
-			return i + markerLength
+func position(length int) int {
+	m := make(map[rune]int)
+	for i := 0; i < len(buffer); i++ {
+		if _, ok := m[buffer[i]]; !ok {
+			m[buffer[i]] = i
+			if len(m) == length {
+				return i + 1
+			}
+		} else {
+			i = m[buffer[i]]
+			m = make(map[rune]int)
 		}
 	}
 	return -1
 }
 
 func part01() int {
-	return markerPosition(4)
+	return position(4)
 }
 
 func part02() int {
-	return markerPosition(14)
+	return position(14)
 }
 
 func Main() {

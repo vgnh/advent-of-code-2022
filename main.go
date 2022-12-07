@@ -7,6 +7,7 @@ import (
 	"advent-of-code-2022/day04"
 	"advent-of-code-2022/day05"
 	"advent-of-code-2022/day06"
+	"advent-of-code-2022/day07"
 	"fmt"
 	"time"
 )
@@ -20,6 +21,7 @@ func main() {
 	day04.Main()
 	day05.Main()
 	day06.Main()
+	day07.Main()
 
 	fmt.Printf("\nTime elapsed: %v\n", time.Since(start))
 }
